@@ -1,2 +1,2 @@
 # argdude
-Cheeck and set function arguments
+Documentation is boring, but will soon follow :)
