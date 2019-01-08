@@ -58,6 +58,24 @@ def test_opt_exclude():
     return test('opt_exclude', arg_true, arg_false, chk_args)
 
 
+def test_opt_set_var():
+    arg_true  = {'foo' : 'bar'}
+    arg_false = {}
+    chk_args  = {'foo' : {'set_var' : {'a' : '@SELF'}}}
+
+    check_args(arg_false, chk_args)
+    test_false = chk_args == {'foo'     : {'set_var': {'a': '@SELF'}}, 
+                              'set_var' : {}}
+
+    check_args(arg_true, chk_args)
+    test_true  = chk_args == {'foo'     : {'set_var': {'a': 'bar'}}, 
+                              'set_var' : {'a': 'bar'}}
+
+    return {'opt_set_var' : {'test_true'  : test_true,
+                             'test_false' : test_false}}
+
+
+
 def test_arg_type():
     arg_true  = {'foo' : 'bar'}
     arg_false = {'foo' : 42}
@@ -191,6 +209,7 @@ def main():
                   test_opt_required_bool,
                   test_opt_include,
                   test_opt_exclude,
+                  test_opt_set_var,
                   test_arg_default,
                   test_arg_type,
                   test_arg_allow,

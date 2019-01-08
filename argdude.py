@@ -13,6 +13,7 @@ def init_chk_args(chk_args):
             'opt_required_bool' : [bool, type],
             'opt_include'       : [list],
             'opt_exclude'       : [list],
+            'opt_set_var'       : [dict],
             'arg_type'          : [list],
             'char_min'          : [int],
             'char_max'          : [int],
@@ -62,7 +63,7 @@ def check_args(args, chk_args):
         return False
     
     # set option variables
-    # args.update(lib_checkargs.set_opt_vars(args, chk_args)
+    chk_args['set_var'] = lib_checkargs.opt_set_var(args, chk_args)
 
     # set default arguments
     args.update(lib_checkargs.arg_default(args, chk_args))

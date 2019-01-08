@@ -98,6 +98,24 @@ def opt_exclude(args, chk_args):
 
 
 
+def opt_set_var(args, chk_args):
+    dict_vars = {}
+    for option_name in args:
+        if not option_name in chk_args:
+            continue
+
+        set_var = chk_args[option_name].get('set_var', None)
+        if set_var:
+            for var_name in set_var:
+                if set_var[var_name] == '@SELF':
+                    set_var[var_name] = args[option_name]
+
+            dict_vars.update(set_var)
+
+    return dict_vars
+
+
+
 def arg_type(option_name, option_value, chk_args):
     if 'arg_type' in chk_args[option_name]:
         option_type_list = chk_args[option_name]['arg_type']
@@ -108,8 +126,8 @@ def arg_type(option_name, option_value, chk_args):
         if option_type is not type(option_value):
             log.error('opt, [%s]: argument has wrong type! ( %s != %s )'
                       % (option_name,
-                         str(type(option_value)).split("'")[1],
-                         str(option_type).split("'")[1]))
+                         str(type(option_value))[8:-2],
+                         str(option_type)[8:-2]))
             return False
 
     return True
@@ -304,20 +322,4 @@ def arg_default(args, chk_args):
             args[option_name] = default_value
 
     return args
-
-
-
-def opt_set_var(arg, args, chk_args, dict_set_var):
-    dict_vars = chk_args[arg]['set_var']
-    for var in dict_vars:
-        if dict_vars[var] == '@SELF':
-            dict_set_var.update({var: args[arg]})
-        else:
-            dict_set_var.update({var: dict_vars[var]})
-
-            log.debug('opt, [%s]: setting variable! ( %s )'
-                      % (arg,
-                         str(dict_set_var[var])))
-
-    return {'VAR': dict_set_var}
 
