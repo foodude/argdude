@@ -226,6 +226,20 @@ arg, [foo]: check success! ( user_name_true -> root )
 out[2] {'user_name': 'root'}
 ```
 
+write your own check
+```
+def the_answer(x):
+    return x == 42
+
+chk_args = {'answere': {'arg_check': [the_answer]}}
+
+args = {'answer': 42}
+
+in [1] check_args(args, chk_args)
+arg, [foo]: check success! ( the_answer -> 42 )
+out[1] {'answer': 42}
+```
+
 
 ## Tests
 ```
