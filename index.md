@@ -1,5 +1,30 @@
 # Argdude documentation
 
+   * [Argdude documentation](#argdude-documentation)
+      * [Description](#description)
+      * [Options](#options)
+         * [opt_unknown](#opt_unknown)
+         * [opt_ignore](#opt_ignore)
+         * [opt_required](#opt_required)
+         * [opt_required_bool](#opt_required_bool)
+         * [opt_include](#opt_include)
+         * [opt_exclude](#opt_exclude)
+      * [Arguments](#arguments)
+         * [arg_type](#arg_type)
+         * [arg_allow](#arg_allow)
+         * [arg_deny](#arg_deny)
+         * [char_min](#char_min)
+         * [char_max](#char_max)
+         * [int_min](#int_min)
+         * [int_max](#int_max)
+         * [float_min](#float_min)
+         * [float_max](#float_max)
+         * [decp_min](#decp_min)
+         * [decp_max](#decp_max)
+         * [arg_check](#arg_check)
+      * [Tests](#tests)
+
+
 
 ## Description
 incomplete but in progress :)
