@@ -218,7 +218,7 @@ from argdude_check in user_name_true
 chk_args = {'user_name': {'arg_check': [user_name_false]}}
 
 in [1] args = {'user_name': 'aquaman'}
-arg, [foo]: check error! ( user_name_true -> root )
+arg, [foo]: check error! ( user_name_true -> aquaman )
 out[1] False
 
 in [2] args = {'user_name': 'root'}
