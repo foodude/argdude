@@ -1,8 +1,16 @@
 # Argdude documentation
 
 
+## Description
+
 
 ## Options
+
+### opt_unknown
+
+
+### opt_ignore
+
 
 ### opt_required
 check for required options
@@ -58,6 +66,30 @@ out[1] False
 ```
 
 
-
-
 ## Arguments
+
+### arg_type
+
+### arg_allow
+
+### arg_deny
+
+### char_min
+
+### char_max
+
+### int_min
+
+### int_max
+
+### float_min
+
+### float_max
+
+### decp_min
+
+### decp_max
+
+### arg_check
+
+
