@@ -23,13 +23,12 @@
          * [decp_max](#decp_max)
          * [arg_check](#arg_check)
       * [Tests](#tests)
-<p>
-
-
+</br>
+</br>
 ## Description
 Argdude is a library to test keyword arguments on various conditions
-<p>
-
+</br>
+</br>
 ## Disclaimer 
 I apologize for my short text versions and errors contained therein.
 English is not my native language but i will try to fix all formal and 
@@ -42,9 +41,7 @@ I've tested argdude exclusively on Linux, but it should also run on other
 operating systems.
 The module 'argdude_checks', is Linux only but not necessary. The checks 
 contained therein can be replaced by your own as decribed in point 'arg_check'
-
-
-
+</p>
 ## Introduction
 For all code examples below, the following is required
 ```
