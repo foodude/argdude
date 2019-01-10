@@ -33,7 +33,6 @@ incomplete but in progress :)
 
 ### opt_unknown
 ```
-// Pyton code with syntax highlighting.
 chk_args = {}
 
 args = {'foo': 'bar'}
