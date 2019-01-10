@@ -157,3 +157,51 @@ out[1] False
 ### arg_check
 
 
+## Tests
+```
+from argdude_test import main
+
+main()
+2019.01.10 11:55:26 lib_checkargs opt_unknown opt: unknown option! ( bar )
+2019.01.10 11:55:26 lib_checkargs opt_required opt: is required but undefined! ( foo )
+2019.01.10 11:55:26 lib_checkargs opt_required_bool opt: except one option but none is defined! ( ['foo', 'bar'] )
+2019.01.10 11:55:26 lib_checkargs opt_include opt, [foo]: depends on option! ( bar )
+2019.01.10 11:55:26 lib_checkargs opt_unknown opt: unknown option! ( bar )
+2019.01.10 11:55:26 lib_checkargs arg_default arg, [foo]: setting default value! ( foo )
+2019.01.10 11:55:26 lib_checkargs arg_type opt, [foo]: argument has wrong type! ( int != str )
+2019.01.10 11:55:26 lib_checkargs arg_allow arg, [foo]: argument is not allowed! ( foo != ['bar'] )
+2019.01.10 11:55:26 lib_checkargs arg_deny arg, [foo]: argument is denied! ( foo = ['foo'] )
+2019.01.10 11:55:26 lib_checkargs arg_check arg, [foo]: check success! ( file_true -> argdude_test.py )
+2019.01.10 11:55:26 lib_checkargs arg_check arg, [foo]: check error! ( file_true -> test_arskdfmsdkfm.py )
+2019.01.10 11:55:26 lib_checkargs arg_char_min_max arg, [foo]: has to less characters! ( 2 < 3 )
+2019.01.10 11:55:26 lib_checkargs arg_char_min_max arg, [foo]: has to much characters! ( 4 > 3 )
+2019.01.10 11:55:26 lib_checkargs arg_int_min_max arg, [foo]: int value is to low! ( 41 < 42 )
+2019.01.10 11:55:26 lib_checkargs arg_int_min_max arg, [foo]: int value is to high! ( 43 > 42 )
+2019.01.10 11:55:26 lib_checkargs arg_float_min_max arg, [foo]: float value is to low! ( 42.0 < 42.1 )
+2019.01.10 11:55:26 lib_checkargs arg_float_min_max arg, [foo]: float value is to high! ( 42.2 > 42.1 )
+2019.01.10 11:55:26 lib_checkargs arg_decp_min_max arg, [foo]: float value has not enough decimal places! ( 42.12 < 3 )
+2019.01.10 11:55:26 lib_checkargs arg_decp_min_max arg, [foo]: float value have to many decimal places!( 42.1234 > 3 )
+2019.01.10 11:55:26 lib_checkargs arg_list_min_max arg, [foo]: list has not enough entries! ( 2 < 3 )
+2019.01.10 11:55:26 lib_checkargs arg_list_min_max arg, [foo]: list has to many entries! ( 4 > 3 )
+[ True | True ] opt_unknown
+[ True | True ] opt_required
+[ True | True ] opt_required_bool
+[ True | True ] opt_include
+[ True | True ] opt_exclude
+[ True | True ] opt_set_var
+[ True | True ] arg_default
+[ True | True ] arg_type
+[ True | True ] arg_allow
+[ True | True ] arg_deny
+[ True | True ] arg_check
+[ True | True ] arg_char_min
+[ True | True ] arg_char_max
+[ True | True ] arg_int_min
+[ True | True ] arg_int_max
+[ True | True ] arg_float_min
+[ True | True ] arg_float_max
+[ True | True ] arg_decp_min
+[ True | True ] arg_decp_max
+[ True | True ] arg_list_min
+[ True | True ] arg_list_max
+```
