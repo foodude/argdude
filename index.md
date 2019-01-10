@@ -232,32 +232,30 @@ out[2] {'user_name': 'root'}
 import logging
 from argdude_test import main
 
-logging.basicConfig(format='%(asctime)s %(module)s %(funcName)s %(message)s', 
-                    datefmt='%Y.%m.%d %H:%M:%S', 
-                    level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
 
 main()
-2019.01.10 11:55:26 lib_checkargs opt_unknown opt: unknown option! ( bar )
-2019.01.10 11:55:26 lib_checkargs opt_required opt: is required but undefined! ( foo )
-2019.01.10 11:55:26 lib_checkargs opt_required_bool opt: except one option but none is defined! ( ['foo', 'bar'] )
-2019.01.10 11:55:26 lib_checkargs opt_include opt, [foo]: depends on option! ( bar )
-2019.01.10 11:55:26 lib_checkargs opt_unknown opt: unknown option! ( bar )
-2019.01.10 11:55:26 lib_checkargs arg_default arg, [foo]: setting default value! ( foo )
-2019.01.10 11:55:26 lib_checkargs arg_type opt, [foo]: argument has wrong type! ( int != str )
-2019.01.10 11:55:26 lib_checkargs arg_allow arg, [foo]: argument is not allowed! ( foo != ['bar'] )
-2019.01.10 11:55:26 lib_checkargs arg_deny arg, [foo]: argument is denied! ( foo = ['foo'] )
-2019.01.10 11:55:26 lib_checkargs arg_check arg, [foo]: check success! ( file_true -> argdude_test.py )
-2019.01.10 11:55:26 lib_checkargs arg_check arg, [foo]: check error! ( file_true -> test_arskdfmsdkfm.py )
-2019.01.10 11:55:26 lib_checkargs arg_char_min_max arg, [foo]: has to less characters! ( 2 < 3 )
-2019.01.10 11:55:26 lib_checkargs arg_char_min_max arg, [foo]: has to much characters! ( 4 > 3 )
-2019.01.10 11:55:26 lib_checkargs arg_int_min_max arg, [foo]: int value is to low! ( 41 < 42 )
-2019.01.10 11:55:26 lib_checkargs arg_int_min_max arg, [foo]: int value is to high! ( 43 > 42 )
-2019.01.10 11:55:26 lib_checkargs arg_float_min_max arg, [foo]: float value is to low! ( 42.0 < 42.1 )
-2019.01.10 11:55:26 lib_checkargs arg_float_min_max arg, [foo]: float value is to high! ( 42.2 > 42.1 )
-2019.01.10 11:55:26 lib_checkargs arg_decp_min_max arg, [foo]: float value has not enough decimal places! ( 42.12 < 3 )
-2019.01.10 11:55:26 lib_checkargs arg_decp_min_max arg, [foo]: float value have to many decimal places!( 42.1234 > 3 )
-2019.01.10 11:55:26 lib_checkargs arg_list_min_max arg, [foo]: list has not enough entries! ( 2 < 3 )
-2019.01.10 11:55:26 lib_checkargs arg_list_min_max arg, [foo]: list has to many entries! ( 4 > 3 )
+ERROR:root:opt: unknown option! ( bar )
+ERROR:root:opt: is required but undefined! ( foo )
+ERROR:root:opt: except one option but none is defined! ( ['foo', 'bar'] )
+ERROR:root:opt, [foo]: depends on option! ( bar )
+ERROR:root:opt: unknown option! ( bar )
+DEBUG:root:arg, [foo]: setting default value! ( foo )
+ERROR:root:opt, [foo]: argument has wrong type! ( int != str )
+ERROR:root:arg, [foo]: argument is not allowed! ( foo != ['bar'] )
+ERROR:root:arg, [foo]: argument is denied! ( foo = ['foo'] )
+DEBUG:root:arg, [foo]: check success! ( file_true -> argdude_test.py )
+ERROR:root:arg, [foo]: check error! ( file_true -> test_arskdfmsdkfm.py )
+ERROR:root:arg, [foo]: has to less characters! ( 2 < 3 )
+ERROR:root:arg, [foo]: has to much characters! ( 4 > 3 )
+ERROR:root:arg, [foo]: int value is to low! ( 41 < 42 )
+ERROR:root:arg, [foo]: int value is to high! ( 43 > 42 )
+ERROR:root:arg, [foo]: float value is to low! ( 42.0 < 42.1 )
+ERROR:root:arg, [foo]: float value is to high! ( 42.2 > 42.1 )
+ERROR:root:arg, [foo]: float value has not enough decimal places! ( 42.12 < 3 )
+ERROR:root:arg, [foo]: float value have to many decimal places!( 42.1234 > 3 )
+ERROR:root:arg, [foo]: list has not enough entries! ( 2 < 3 )
+ERROR:root:arg, [foo]: list has to many entries! ( 4 > 3 )
 [ True | True ] opt_unknown
 [ True | True ] opt_required
 [ True | True ] opt_required_bool
@@ -273,10 +271,10 @@ main()
 [ True | True ] arg_char_max
 [ True | True ] arg_int_min
 [ True | True ] arg_int_max
-[ True | True ] arg_float_min
 [ True | True ] arg_float_max
 [ True | True ] arg_decp_min
 [ True | True ] arg_decp_max
 [ True | True ] arg_list_min
 [ True | True ] arg_list_max
+
 ```
