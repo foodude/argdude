@@ -27,13 +27,41 @@
 
 
 ## Description
-incomplete but in progress :)
+Argdude is a library to test keyword arguments on various conditions
+
+
+## Disclaimer 
+I apologize for my short text versions and errors contained therein.
+English is not my native language but i will try to fix all formal and 
+linguistic errors in this repository
+
+Please note that argdude is in a early stage and many changes
+can happen 
+
+I've tested argdude exclusively on Linux, but it should also run on other
+operating systems.
+The module 'argdude_checks', is Linux only but not necessary. The checks 
+contained therein can be replaced by your own as decribed in point 'arg_check'
+
+
+
+## Introduction
+For all code examples below, the following is required
+```
+import logging
+from argdude import check_args
+
+logging.basicConfig(format='%(message)s', level=logging.DEBUG)
+```
+Of course, you can use any log format you prefer
+
+To get a first overview you can look at the point 'Real world example'.
+
 
 ## Options
 
 ### opt_unknown
 ```
-// Pyton code with syntax highlighting.
 chk_args = {}
 
 args = {'foo': 'bar'}
@@ -316,5 +344,4 @@ ERROR:root:arg, [foo]: list has to many entries! ( 4 > 3 )
 [ True | True ] arg_decp_max
 [ True | True ] arg_list_min
 [ True | True ] arg_list_max
-
 ```
