@@ -23,12 +23,12 @@
          * [decp_max](#decp_max)
          * [arg_check](#arg_check)
       * [Tests](#tests)
-
+<p>
 
 
 ## Description
 Argdude is a library to test keyword arguments on various conditions
-
+<p>
 
 ## Disclaimer 
 I apologize for my short text versions and errors contained therein.
@@ -56,8 +56,8 @@ logging.basicConfig(format='%(message)s', level=logging.DEBUG)
 Of course, you can use any log format you prefer
 
 To get a first overview you can look at the point 'Real world example'.
-
-
+</br>
+</br>
 ## Options
 
 ### opt_unknown
