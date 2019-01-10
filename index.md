@@ -31,8 +31,6 @@ out[1] {}
 
 
 ### opt_required
-check for required options
-
 ```
 args = {}
 
@@ -143,18 +141,90 @@ out[1] False
 ```
 
 ### int_min
+```
+chk_args = {'foo': {'int_min': 1}}
+
+args = {'foo': 0}
+
+in [1] check_args(args, chk_args)
+arg, [foo]: int value is to low! ( 0 < 1 )
+out[1] False
+```
 
 ### int_max
+```
+chk_args = {'foo': {'int_max': 1}}
+
+args = {'foo': 0}
+
+in [1] check_args(args, chk_args)
+arg, [foo]: int value is to high! ( 2 > 1 )
+out[1] False
+```
+
 
 ### float_min
+```
+chk_args = {'foo': {'float_min': 0.2}}
+
+args = {'foo': 0.1}
+
+in [1] check_args(args, chk_args)
+arg, [foo]: float value is to low! ( 0.1 < 0.2 )
+out[1] False
+```
+
 
 ### float_max
+```
+chk_args = {'foo': {'float_max': 0.1}}
+
+args = {'foo': 0}
+
+in [1] check_args(args, chk_args)
+arg, [foo]: float value is to high! ( 0.2 > 0.1 )
+out[1] False
+```
+
 
 ### decp_min
+```
+chk_args = {'foo': {'decp_min': 3}}
+
+args = {'foo': 0.12}
+
+in [1] check_args(args, chk_args)
+arg, [foo]: float value has not enough decimal places! ( 0.12 < 3 )
+out[1] False
+```
+
 
 ### decp_max
+```
+chk_args = {'foo': {'int_max': 3}}
+
+args = {'foo': 0.1234}
+
+in [1] check_args(args, chk_args)
+arg, [foo]: float value have to many decimal places!( 0.1234 > 3 )
+out[1] False
+```
+
 
 ### arg_check
+```
+from argdude_check in user_name_true
+
+chk_args = {'user_name': {'arg_check': [user_name_false]}}
+
+in [1] args = {'user_name': 'aquaman'}
+arg, [foo]: check error! ( user_name_true -> root )
+out[1] False
+
+in [2] args = {'user_name': 'root'}
+arg, [foo]: check success! ( user_name_true -> root )
+out[2] {'user_name': 'root'}
+```
 
 
 ## Tests
