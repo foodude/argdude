@@ -159,7 +159,12 @@ out[1] False
 
 ## Tests
 ```
+import logging
 from argdude_test import main
+
+logging.basicConfig(format='%(asctime)s %(module)s %(funcName)s %(message)s', 
+                    datefmt='%Y.%m.%d %H:%M:%S', 
+                    level=logging.DEBUG)
 
 main()
 2019.01.10 11:55:26 lib_checkargs opt_unknown opt: unknown option! ( bar )
