@@ -1,2 +1,9 @@
-# argdude
-Documentation is boring, but will soon follow :)
+# Argdude
+
+## Install
+
+## Usage
+
+## Example
+
+## License
