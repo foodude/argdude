@@ -86,12 +86,12 @@ out[1] {}
 
 ### opt_required
 ```
+chk_args = {'foo': {'opt_required': True}}
 args = {}
 
-chk_args = {'foo': {'opt_required': True}}
-
 in [1] check_args(args, chk_args)
-out[1] opt: is required but undefined! ( foo )
+opt: is required but undefined! ( foo )
+out[1] False
 ```
 
 
@@ -248,7 +248,7 @@ chk_args = {'foo': {'decp_min': 3}}
 args = {'foo': 0.12}
 
 in [1] check_args(args, chk_args)
-arg, [foo]: float value has not enough decimal places! ( 0.12 < 3 )
+arg, [foo]: float value have not enough decimal places! ( 0.12 < 3 )
 out[1] False
 ```
 
@@ -260,7 +260,7 @@ chk_args = {'foo': {'int_max': 3}}
 args = {'foo': 0.1234}
 
 in [1] check_args(args, chk_args)
-arg, [foo]: float value have to many decimal places!( 0.1234 > 3 )
+arg, [foo]: float value has to many decimal places!( 0.1234 > 3 )
 out[1] False
 ```
 
@@ -272,12 +272,14 @@ from argdude_check in user_name_true
 chk_args = {'user_name': {'arg_check': [user_name_false]}}
 
 in [1] args = {'user_name': 'aquaman'}
+in [2] check_args(args, chk_args)
 arg, [foo]: check error! ( user_name_true -> aquaman )
-out[1] False
+out[2] False
 
-in [2] args = {'user_name': 'root'}
+in [3] args = {'user_name': 'root'}
+in [4] check_args(args, chk_args)
 arg, [foo]: check success! ( user_name_true -> root )
-out[2] {'user_name': 'root'}
+out[4] {'user_name': 'root'}
 ```
 
 write your own check
