@@ -267,7 +267,7 @@ out[1] False
 
 ### arg_check
 ```
-from argdude_check in user_name_true
+from argdude.checks.user in user_name_true
 
 chk_args = {'user_name': {'arg_check': [user_name_false]}}
 
@@ -300,32 +300,32 @@ out[1] {'answer': 42}
 ## Tests
 ```
 import logging
-from argdude_test import main
+from argdude.test import test_check_args
 
 logging.basicConfig(level=logging.DEBUG)
 
-main()
-ERROR:root:opt: unknown option! ( bar )
-ERROR:root:opt: is required but undefined! ( foo )
-ERROR:root:opt: except one option but none is defined! ( ['foo', 'bar'] )
-ERROR:root:opt, [foo]: depends on option! ( bar )
-ERROR:root:opt: unknown option! ( bar )
-DEBUG:root:arg, [foo]: setting default value! ( foo )
-ERROR:root:opt, [foo]: argument has wrong type! ( int != str )
-ERROR:root:arg, [foo]: argument is not allowed! ( foo != ['bar'] )
-ERROR:root:arg, [foo]: argument is denied! ( foo = ['foo'] )
-DEBUG:root:arg, [foo]: check success! ( file_true -> argdude_test.py )
-ERROR:root:arg, [foo]: check error! ( file_true -> test_arskdfmsdkfm.py )
-ERROR:root:arg, [foo]: has to less characters! ( 2 < 3 )
-ERROR:root:arg, [foo]: has to much characters! ( 4 > 3 )
-ERROR:root:arg, [foo]: int value is to low! ( 41 < 42 )
-ERROR:root:arg, [foo]: int value is to high! ( 43 > 42 )
-ERROR:root:arg, [foo]: float value is to low! ( 42.0 < 42.1 )
-ERROR:root:arg, [foo]: float value is to high! ( 42.2 > 42.1 )
-ERROR:root:arg, [foo]: float value has not enough decimal places! ( 42.12 < 3 )
-ERROR:root:arg, [foo]: float value have to many decimal places!( 42.1234 > 3 )
-ERROR:root:arg, [foo]: list has not enough entries! ( 2 < 3 )
-ERROR:root:arg, [foo]: list has to many entries! ( 4 > 3 )
+test_check_args()
+opt: unknown option! ( bar )
+opt: is required but undefined! ( foo )
+opt: except one option but none is defined! ( ['foo', 'bar'] )
+opt, [foo]: depends on option! ( bar )
+opt: unknown option! ( bar )
+arg, [foo]: setting default value! ( foo )
+opt, [foo]: argument has wrong type! ( int != str )
+arg, [foo]: argument is not allowed! ( foo != ['bar'] )
+arg, [foo]: argument is denied! ( foo = ['foo'] )
+arg, [foo]: check success! ( file_true -> argdude_test.py )
+arg, [foo]: check error! ( file_true -> test_arskdfmsdkfm.py )
+arg, [foo]: has to less characters! ( 2 < 3 )
+arg, [foo]: has to much characters! ( 4 > 3 )
+arg, [foo]: int value is to low! ( 41 < 42 )
+arg, [foo]: int value is to high! ( 43 > 42 )
+arg, [foo]: float value is to low! ( 42.0 < 42.1 )
+arg, [foo]: float value is to high! ( 42.2 > 42.1 )
+arg, [foo]: float value has not enough decimal places! ( 42.12 < 3 )
+arg, [foo]: float value have to many decimal places!( 42.1234 > 3 )
+arg, [foo]: list has not enough entries! ( 2 < 3 )
+arg, [foo]: list has to many entries! ( 4 > 3 )
 [ True | True ] opt_unknown
 [ True | True ] opt_required
 [ True | True ] opt_required_bool
@@ -346,4 +346,3 @@ ERROR:root:arg, [foo]: list has to many entries! ( 4 > 3 )
 [ True | True ] arg_decp_max
 [ True | True ] arg_list_min
 [ True | True ] arg_list_max
-```
