@@ -2,10 +2,10 @@
 Argdude is a Python library to test keyword arguments on various conditions
 
 ## Install
-At the moment argdude is not packaged
 ```
-cd /you/project
 git clone https://github.com/foodude/argdude.git
+cd argdude/
+python3 setup install
 ```
 
 ## Usage
