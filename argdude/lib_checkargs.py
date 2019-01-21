@@ -3,6 +3,56 @@ log.getLogger().addHandler(log.NullHandler())
 
 
 
+def initialize(chk_args):
+    """ initialyze chk_args """
+
+    def stupid():
+        return None
+
+    keys = {'opt_required'      : [bool, type],
+            'opt_required_bool' : [bool, type],
+            'opt_include'       : [list],
+            'opt_exclude'       : [list],
+            'opt_set_var'       : [dict],
+            'arg_type'          : [list],
+            'char_min'          : [int],
+            'char_max'          : [int],
+            'int_min'           : [int],
+            'int_max'           : [int],
+            'float_min'         : [float],
+            'float_max'         : [float],
+            'decp_min'          : [int],
+            'decp_max'          : [int],
+            'list_min'          : [int],
+            'list_max'          : [int],
+            'arg_allow'         : [list],
+            'arg_deny'          : [list],
+            'arg_check'         : [type(stupid), list],
+            'arg_default'       : [type(stupid), 
+                                   str, int, float, list, dict, tuple],
+            'set_var'           : [dict],
+            'sys_arg'           : [list]}
+
+    for option_name in chk_args:
+        for chk_args_keyword in chk_args[option_name]:
+            if chk_args_keyword not in keys:
+                log.error('chk_args: keyword does not exist! ( %s )'
+                          % chk_args_keyword)
+                return False
+
+            if type(chk_args[option_name][chk_args_keyword])\
+                    not in keys[chk_args_keyword]:
+                log.error('chk_args, [%s]: key value has wrong type! '
+                          '( %s != %s )'
+                          % (chk_args_keyword,
+                             type(chk_args[option_name][chk_args_keyword]),
+                             keys[chk_args_keyword]))
+                return False
+
+    return True
+
+
+
 def opt_unknown(args, chk_args):
     for option_name in args:
         if option_name not in chk_args:
