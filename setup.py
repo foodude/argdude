@@ -1,8 +1,8 @@
 from distutils.core import setup
 setup(name          = 'argdude',
-      packages      = ['argdude', 
-                       'argdude_checks',
-                       'argdude_test'],
+      packages      = ['argdude',
+                       'argdude.checks',
+                       'argdude.test'],
       version       = '0.1',
       description   = 'Argdude is a Python library to test keyword arguments ' 
                       'on various conditions',
