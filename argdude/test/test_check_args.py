@@ -1,5 +1,5 @@
 from argdude import check_args
-from argdude_checks.file_checks import file_true
+from argdude.checks.file_checks import file_true
 
 
 def test(func_name, arg_true, arg_false, chk_args):
