@@ -197,7 +197,7 @@ def test_arg_default():
                              'test_false' : test_false}}
 
 
-def test_all():
+def test_check_args():
     """
     info:
         test check_args functionality
