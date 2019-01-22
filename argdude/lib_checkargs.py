@@ -29,7 +29,7 @@ def initialize(chk_args):
             'arg_deny'          : [list],
             'arg_check'         : [type(stupid), list],
             'arg_default'       : [type(stupid), 
-                                   str, int, float, list, dict, tuple],
+                                   bool, str, int, float, list, dict, tuple],
             'set_var'           : [dict],
             'sys_arg'           : [list]}
 
@@ -108,7 +108,7 @@ def opt_required_bool(args, chk_args):
             return True
 
     if required_bool:
-        log.error('opt: except one option but none is defined! ( %s )'
+        log.error('opt: expect one option but none is defined! ( %s )'
                   % str(required_bool))
         return False
 
@@ -118,7 +118,8 @@ def opt_required_bool(args, chk_args):
 
 def opt_include(args, chk_args):
     for option_name in chk_args:
-        if 'opt_include' not in chk_args[option_name]:
+        if 'opt_include' not in chk_args[option_name]\
+        or option_name not in args:
             continue
 
         for include_option in chk_args[option_name]['opt_include']:
@@ -134,9 +135,11 @@ def opt_include(args, chk_args):
 
 def opt_exclude(args, chk_args):
     for option_name in chk_args:
-        if 'opt_exclude' not in chk_args[option_name]:
+        if 'opt_exclude' not in chk_args[option_name]\
+        or option_name not in args:
             continue
 
+        
         for exclude_option in chk_args[option_name]['opt_exclude']:
             if exclude_option in args:
                 log.error('opt [%s]: exclude option! ( %s )'

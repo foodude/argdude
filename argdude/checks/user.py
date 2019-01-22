@@ -8,7 +8,7 @@ def get_user_list(user_type):
 def get_group_list(group_type):
     group_types = {'group_name' : 0, 'group_id' : 2}
     with open('/etc/group', 'r') as file:
-        return [x.split(':')[group_types][group_type] for x in file]
+        return [x.split(':')[group_types[group_type]] for x in file]
 
 
 def user_name_true(user_name):
