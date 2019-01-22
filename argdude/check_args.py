@@ -12,11 +12,11 @@ def check_args(args, chk_args):
     if not lib_checkargs.initialize(chk_args):
         return False
     
-    # set option variables
-    chk_args['set_var'] = lib_checkargs.opt_set_var(args, chk_args)
-
     # set default arguments
     args.update(lib_checkargs.arg_default(args, chk_args))
+
+    # set option variables
+    chk_args['set_var'] = lib_checkargs.opt_set_var(args, chk_args)
 
     # check options
     for check_opt in [lib_checkargs.opt_unknown,

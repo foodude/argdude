@@ -361,7 +361,7 @@ def arg_check(option_name, option_value, chk_args):
 def arg_default(args, chk_args):
     for option_name in chk_args:
         if option_name in args:
-            return args
+            continue
 
         if 'arg_default' in chk_args[option_name]:
             default_value = chk_args[option_name]['arg_default']
