@@ -1,5 +1,5 @@
 from argdude import check_args
-from argdude.checks.file_checks import file_true
+from argdude.checks.file import file_true
 
 
 def test(func_name, arg_true, arg_false, chk_args):
@@ -99,7 +99,7 @@ def test_arg_deny():
 
 
 def test_arg_check():
-    arg_true  = {'foo' : 'argdude_test.py'}
+    arg_true  = {'foo' : '/etc/passwd'}
     arg_false = {'foo' : 'test_arskdfmsdkfm.py'}
     chk_args  = {'foo' : {'arg_check' : file_true}}
     return test('arg_check', arg_true, arg_false, chk_args)
