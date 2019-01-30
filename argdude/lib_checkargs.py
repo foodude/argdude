@@ -212,73 +212,74 @@ def arg_char_min_max(option_name, option_value, chk_args):
 
 
 def arg_int_min_max(option_name, option_value, chk_args):
-    if 'int_min' in chk_args[option_name]:
-        int_min = chk_args[option_name]['int_min']
-        if option_value < int_min:
-            log.error('arg, [%s]: int value is to low! ( %s < %s )'
-                      % (option_name,
-                         option_value,
-                         int_min))
-            return False
+    log_msg = {'to_low' : 'arg, [%s]: int value is to low! ( %s < %s )',
+               'to_high': 'arg, [%s]: int value is to high! ( %s > %s )'}
 
+    int_min  = chk_args[option_name].get('int_min', False)
+    int_max  = chk_args[option_name].get('int_max', False)
+    log_args = [option_name, option_value]
 
-    if 'int_max' in chk_args[option_name]:
-        int_max = chk_args[option_name]['int_max']
-        if option_value > int_max:
-            log.error('arg, [%s]: int value is to high! ( %s > %s )'
-                      % (option_name,
-                         option_value,
-                         int_max))
-            return False
+    if int_min and int_min > option_value:
+        log_args.append(int_min)
+        log.error(log_msg['to_high'] % tuple(log_args))
+        return False
 
-    return True
+    elif int_max and int_max < option_value:
+        log_args.append(int_max)
+        log.error(log_msg['to_high'] % tuple(log_args))
+        return False
+
+    else:
+        return True
 
 
 
 def arg_float_min_max(option_name, option_value, chk_args):
-    if 'float_min' in chk_args[option_name]:
-        float_min = chk_args[option_name]['float_min']
-        if option_value < float_min:
-            log.error('arg, [%s]: float value is to low! ( %s < %s )'
-                      % (option_name,
-                         option_value,
-                         float_min))
-            return False
+    log_msg = {'to_low' : 'arg, [%s]: float value is to low! ( %s < %s )',
+               'to_high': 'arg, [%s]: float value is to high! ( %s > %s )'}
 
+    float_min = chk_args[option_name].get('float_min', False)
+    float_max = chk_args[option_name].get('float_max', False)
+    log_args  = [option_name, option_value]
 
-    if 'float_max' in chk_args[option_name]:
-        float_max = chk_args[option_name]['float_max']
-        if option_value > float_max:
-            log.error('arg, [%s]: float value is to high! ( %s > %s )'
-                      % (option_name,
-                         option_value,
-                         float_max))
-            return False
+    if float_min and float_min > option_value:
+        log_args.append(float_min)
+        log.error(log_msg['to_low'] % tuple(log_args))
+        return False
 
-    return True
+    elif float_max and float_max < option_value:
+        log_args.append(float_max)
+        log.error(log_msg['to_high'] % tuple(log_args))
+        return False
+
+    else:
+        return True
 
 
 
 def arg_decp_min_max(option_name, option_value, chk_args):
-    if 'decp_min' in chk_args[option_name]:
-        decp_min = chk_args[option_name]['decp_min']
-        if len(str(option_value).split('.')[1]) < decp_min:
-            log.error('arg, [%s]: float value has not enough decimal places! ' 
-                      '( %s < %s )' % (option_name,
-                                       option_value,
-                                       decp_min))
-            return False
+    log_msg = {'to_low' : 'arg, [%s]: float value has not enough decimal places! '
+                          '( %s < %s )',
+               'to_high': 'arg, [%s]: float value have to many decimal places!'
+                          '( %s > %s )'}
+    decp_min = chk_args[option_name].get('decp_min', False)
+    decp_max = chk_args[option_name].get('decp_max', False)
+    log_args = [option_name, option_value]
+    if decp_min or decp_max:
+        decp_value = len(str(option_value).split('.')[1])
 
-    if 'decp_max' in chk_args[option_name]:
-        decp_max = chk_args[option_name]['decp_max']
-        if len(str(option_value).split('.')[1]) > decp_max:
-            log.error('arg, [%s]: float value have to many decimal places!'
-                      '( %s > %s )' % (option_name,
-                                       option_value,
-                                       decp_max))
-            return False
+    if decp_min and decp_min > decp_value:
+        log_args.append(decp_min)
+        log.error(log_msg['to_low'] % tuple(log_args))
+        return False
 
-    return True
+    elif decp_max and decp_max < decp_value:
+        log_args.append(decp_max)
+        log.error(log_msg['to_high'] % tuple(log_args))
+        return False
+
+    else:
+        return True
 
 
 
