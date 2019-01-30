@@ -190,17 +190,17 @@ def arg_type(option_name, option_value, chk_args):
 def arg_char_min_max(option_name, option_value, chk_args):
     log_msg = {'to_low' : 'arg [%s]: has to less characters! ( %s < %s )',
                'to_high': 'arg [%s]: has to much characters! ( %s > %s )'}
-    
+
     char_min = chk_args[option_name].get('char_min', False)
     char_max = chk_args[option_name].get('char_max', False)
     log_args = [option_name, option_value]
 
-    if char_min and char_min > option_value:
+    if char_min and char_min > len(option_value):
         log_args.append(char_min)
         log.error(log_msg['to_low'] % tuple(log_args))
         return False
 
-    elif char_max and char_max < option_value:
+    elif char_max and char_max < len(option_value):
         log_args.append(char_max)
         log.error(log_msg['to_high'] % tuple(log_args))
         return False
@@ -283,26 +283,25 @@ def arg_decp_min_max(option_name, option_value, chk_args):
 
 
 def arg_list_min_max(option_name, option_value, chk_args):
-    if 'list_min' in chk_args[option_name]:
-        list_min = chk_args[option_name]['list_min']
-        if len(option_value) < list_min:
-            log.error('arg, [%s]: list has not enough entries! ( %s < %s )'
-                      % (option_name,
-                         len(option_value),
-                         list_min))
-            return False
+    log_msg = {'to_low' : 'arg [%s]: list has not enough entries! ( %s < %s )',
+               'to_high': 'arg [%s]: list has to many entries! ( %s > %s )'} 
+    
+    list_min = chk_args[option_name].get('list_min', False)
+    list_max = chk_args[option_name].get('list_max', False)
+    log_args = [option_name, option_value]
 
-    if 'list_max' in chk_args[option_name]:
-        list_max = chk_args[option_name]['list_max']
+    if list_min and list_min > len(option_value):
+        log_args.append(list_min)
+        log.error(log_msg['to_low'] % tuple(log_args))
+        return False
 
-        if len(option_value) > list_max:
-            log.error('arg, [%s]: list has to many entries! ( %s > %s )'
-                      % (option_name,
-                         len(option_value),
-                         list_max))
-            return False
+    elif list_max and list_max < len(option_value):
+        log_args.append(list_max)
+        log.error(log_msg['to_high'] % tuple(log_args))
+        return False
 
-    return True
+    else:
+        return True
 
 
 
