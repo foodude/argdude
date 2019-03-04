@@ -226,13 +226,28 @@ def test_check_args():
                   test_arg_list_min,
                   test_arg_list_max]
 
+    # run all tests and store its output
+    # to a dictionary
     foo = {}
     for Test in list_tests:
         foo.update(Test())
 
+    # print info
     for output in foo:
         print('[ %s | %s ] %s'
                 % (foo[output]['test_true'],
                    foo[output]['test_false'],
                    output))
+
+    # return 
+    for test in foo:
+        if foo[test]['test_true'] is False:
+            return False
+
+        elif foo[test]['test_false'] is False:
+            return False
+
+    return True
+
+
 
