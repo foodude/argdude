@@ -292,12 +292,12 @@ chk_args = {'user_name': {'arg_check': [user_name_false]}}
 
 in [1] args = {'user_name': 'aquaman'}
 in [2] check_args(args, chk_args)
-arg, [foo]: check error! ( user_name_true -> aquaman )
+arg, [user_name]: check error! ( user_name_true -> aquaman )
 out[2] False
 
 in [3] args = {'user_name': 'root'}
 in [4] check_args(args, chk_args)
-arg, [foo]: check success! ( user_name_true -> root )
+arg, [user_name]: check success! ( user_name_true -> root )
 out[4] {'user_name': 'root'}
 ```
 
@@ -311,7 +311,7 @@ chk_args = {'answere': {'arg_check': [the_answer]}}
 args = {'answer': 42}
 
 in [1] check_args(args, chk_args)
-arg, [foo]: check success! ( the_answer -> 42 )
+arg, [answer]: check success! ( the_answer -> 42 )
 out[1] {'answer': 42}
 ```
 
