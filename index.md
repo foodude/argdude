@@ -1,15 +1,19 @@
-# Argdude documentation
+Table of Contents
+=================
 
    * [Argdude documentation](#argdude-documentation)
       * [Description](#description)
-      * [Options](#options)
+      * [Disclaimer](#disclaimer)
+      * [Introduction](#introduction)
+      * [CHK_ARGS](#chk_args)
+         * [Options](#options)
          * [opt_unknown](#opt_unknown)
          * [opt_ignore](#opt_ignore)
          * [opt_required](#opt_required)
          * [opt_required_bool](#opt_required_bool)
          * [opt_include](#opt_include)
          * [opt_exclude](#opt_exclude)
-      * [Arguments](#arguments)
+         * [Arguments](#arguments)
          * [arg_type](#arg_type)
          * [arg_allow](#arg_allow)
          * [arg_deny](#arg_deny)
@@ -22,9 +26,13 @@
          * [decp_min](#decp_min)
          * [decp_max](#decp_max)
          * [arg_check](#arg_check)
-      * [Tests](#tests)
+   * [Tests](#tests)
+      * [GET_ARGS](#get_args)
+      * [CHK_ARGS](#chk_args-1)
 
 
+
+# Argdude documentation
 
 ## Description
 Argdude is a library to test keyword arguments on various conditions
@@ -298,7 +306,11 @@ out[1] {'answer': 42}
 ```
 
 
-## Tests
+# Tests
+
+## GET_ARGS
+
+## CHK_ARGS
 ```
 import logging
 from argdude.test import test_check_args
