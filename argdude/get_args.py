@@ -90,8 +90,8 @@ def arg_set_type(option_name, option_value, chk_args):
             except:
                 log.error('opt [%s]: could not set_type! ( %s -> %s )'
                           % (option_name,
-                             type(option_value),
-                             set_type))
+                             str(type(arg)).split("'")[1],
+                             str(set_type).split("'")[1]))
                 return False
     else:
         return option_value
