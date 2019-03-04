@@ -6,6 +6,9 @@ Table of Contents
       * [Description](#description)
       * [Disclaimer](#disclaimer)
       * [Introduction](#introduction)
+   * [GET_ARGS](#get_args)
+      * [Description](#description-1)
+      * [Define sys args](#define-sys-args)
    * [CHK_ARGS](#chk_args)
       * [Options](#options)
          * [opt_unknown](#opt_unknown)
@@ -28,7 +31,7 @@ Table of Contents
          * [decp_max](#decp_max)
          * [arg_check](#arg_check)
    * [Tests](#tests)
-      * [GET_ARGS](#get_args)
+      * [GET_ARGS](#get_args-1)
       * [CHK_ARGS](#chk_args-1)
 
 
@@ -65,6 +68,12 @@ logging.basicConfig(format='%(message)s', level=logging.DEBUG)
 Of course, you can use any log format you prefer
 
 To get a first overview you can look at the point 'Real world example'.
+
+
+# GET_ARGS
+## Description
+
+## Define sys args
 
 
 # CHK_ARGS
