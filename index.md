@@ -1,3 +1,4 @@
+
 Table of Contents
 =================
 
@@ -5,15 +6,15 @@ Table of Contents
       * [Description](#description)
       * [Disclaimer](#disclaimer)
       * [Introduction](#introduction)
-      * [CHK_ARGS](#chk_args)
-         * [Options](#options)
+   * [CHK_ARGS](#chk_args)
+      * [Options](#options)
          * [opt_unknown](#opt_unknown)
          * [opt_ignore](#opt_ignore)
          * [opt_required](#opt_required)
          * [opt_required_bool](#opt_required_bool)
          * [opt_include](#opt_include)
          * [opt_exclude](#opt_exclude)
-         * [Arguments](#arguments)
+      * [Arguments](#arguments)
          * [arg_type](#arg_type)
          * [arg_allow](#arg_allow)
          * [arg_deny](#arg_deny)
@@ -66,8 +67,8 @@ Of course, you can use any log format you prefer
 To get a first overview you can look at the point 'Real world example'.
 
 
-## CHK_ARGS
-### Options
+# CHK_ARGS
+## Options
 
 ### opt_unknown
 ```
@@ -146,7 +147,7 @@ out[1] False
 ```
 
 
-### Arguments
+## Arguments
 
 ### arg_type
 ```
