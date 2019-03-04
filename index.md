@@ -58,7 +58,8 @@ Of course, you can use any log format you prefer
 To get a first overview you can look at the point 'Real world example'.
 
 
-## Options
+## CHK_ARGS
+### Options
 
 ### opt_unknown
 ```
@@ -137,7 +138,7 @@ out[1] False
 ```
 
 
-## Arguments
+### Arguments
 
 ### arg_type
 ```
