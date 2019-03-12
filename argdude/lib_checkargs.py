@@ -189,8 +189,8 @@ def arg_type(option_name, option_value, chk_args):
 
 
 def arg_char_min_max(option_name, option_value, chk_args):
-    log_msg = {'to_low' : 'arg [%s]: has to less characters! ( %s < %s )',
-               'to_high': 'arg [%s]: has to much characters! ( %s > %s )'}
+    log_msg = {'to_low' : 'arg, [%s]: has to less characters! ( %s < %s )',
+               'to_high': 'arg, [%s]: has to much characters! ( %s > %s )'}
 
     char_min = chk_args[option_name].get('char_min', False)
     char_max = chk_args[option_name].get('char_max', False)
@@ -284,8 +284,8 @@ def arg_decp_min_max(option_name, option_value, chk_args):
 
 
 def arg_list_min_max(option_name, option_value, chk_args):
-    log_msg = {'to_low' : 'arg [%s]: list has not enough entries! ( %s < %s )',
-               'to_high': 'arg [%s]: list has to many entries! ( %s > %s )'} 
+    log_msg = {'to_low' : 'arg, [%s]: list has not enough entries! ( %s < %s )',
+               'to_high': 'arg, [%s]: list has to many entries! ( %s > %s )'} 
     
     list_min = chk_args[option_name].get('list_min', False)
     list_max = chk_args[option_name].get('list_max', False)
@@ -313,7 +313,8 @@ def arg_etypes(option_name, option_value, chk_args):
 
     for count, element in enumerate(option_value):
         if type(element) not in check_element_types:
-            log.error('arg [%s]: element %s is from unexpectet type! ( %s != %s )'
+            log.error('arg, [%s]: element %s is from unexpectet type! ' 
+                      '( %s != %s )'
                       % (option_name,
                          count,
                          str(type(element)).split("'")[1],
