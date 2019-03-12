@@ -15,6 +15,7 @@ def initialize(chk_args):
             'opt_exclude'       : [list],
             'opt_set_var'       : [dict],
             'arg_type'          : [list],
+            'arg_etypes'        : [list],
             'char_min'          : [int],
             'char_max'          : [int],
             'int_min'           : [int],
@@ -302,6 +303,24 @@ def arg_list_min_max(option_name, option_value, chk_args):
 
     else:
         return True
+
+
+
+def arg_etypes(option_name, option_value, chk_args):
+    check_element_types = chk_args[option_name].get('arg_etypes', None)
+    if check_element_types is None:
+        return True
+
+    for count, element in enumerate(option_value):
+        if type(element) not in check_element_types:
+            log.error('arg [%s]: element %s is from unexpectet type! ( %s != %s )'
+                      % (option_name,
+                         count,
+                         str(type(element)).split("'")[1],
+                         [str(x).split("'")[1] for x in check_element_types]))
+            return False
+
+    return True
 
 
 

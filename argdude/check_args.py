@@ -33,6 +33,7 @@ def check_args(args, chk_args):
         option_value = args[option_name]
 
         for check_arg in [lib_checkargs.arg_type,
+                          lib_checkargs.arg_etypes,
                           lib_checkargs.arg_allow,
                           lib_checkargs.arg_deny,
                           lib_checkargs.arg_char_min_max,
