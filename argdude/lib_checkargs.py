@@ -15,7 +15,7 @@ def initialize(chk_args):
             'opt_exclude'       : [list],
             'opt_set_var'       : [dict],
             'arg_type'          : [list],
-            'arg_etypes'        : [list],
+            'arg_etype'         : [list],
             'char_min'          : [int],
             'char_max'          : [int],
             'int_min'           : [int],
@@ -306,8 +306,8 @@ def arg_list_min_max(option_name, option_value, chk_args):
 
 
 
-def arg_etypes(option_name, option_value, chk_args):
-    check_element_types = chk_args[option_name].get('arg_etypes', None)
+def arg_etype(option_name, option_value, chk_args):
+    check_element_types = chk_args[option_name].get('arg_etype', None)
     if check_element_types is None:
         return True
 

@@ -84,11 +84,11 @@ def test_arg_type():
     return test('arg_type', arg_true, arg_false, chk_args)
 
 
-def test_arg_etypes():
+def test_arg_etype():
     arg_true  = {'foo': [1, 1.123]}
     arg_false = {'foo': [1, 'bar']}
-    chk_args  = {'foo': {'arg_etypes': [int, float]}}
-    return test('arg_etypes', arg_true, arg_false, chk_args)
+    chk_args  = {'foo': {'arg_etype': [int, float]}}
+    return test('arg_etype', arg_true, arg_false, chk_args)
 
 
 def test_arg_allow():
@@ -219,7 +219,7 @@ def test_check_args():
                   test_opt_set_var,
                   test_arg_default,
                   test_arg_type,
-                  test_arg_etypes,
+                  test_arg_etype,
                   test_arg_allow,
                   test_arg_deny,
                   test_arg_check,
