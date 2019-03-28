@@ -36,6 +36,10 @@ def initialize(chk_args):
 
     for option_name in chk_args:
         for chk_args_keyword in chk_args[option_name]:
+            ## TODO: reimplement 'arg_default'
+            if chk_args_keyword == 'arg_default':
+                continue
+
             if chk_args_keyword not in keys:
                 log.error('chk_args: keyword does not exist! ( %s )'
                           % chk_args_keyword)
@@ -109,8 +113,9 @@ def opt_required_bool(args, chk_args):
             return True
 
     if required_bool:
-        log.error('opt: expect one option but none is defined! ( %s )'
-                  % str(required_bool))
+        log.error('opt [%]: expect one option but none is defined! ( %s )'
+                  % (option_name,
+                     str(required_bool)))
         return False
 
     return True
@@ -171,18 +176,14 @@ def opt_set_var(args, chk_args):
 
 
 def arg_type(option_name, option_value, chk_args):
-    if 'arg_type' in chk_args[option_name]:
-        option_type_list = chk_args[option_name]['arg_type']
-    else:
-        return True
+    arg_type_list = chk_args[option_name].get('arg_type', [])
 
-    for option_type in option_type_list:
-        if option_type is not type(option_value):
-            log.error('opt, [%s]: argument has wrong type! ( %s != %s )'
-                      % (option_name,
-                         str(type(option_value))[8:-2],
-                         str(option_type)[8:-2]))
-            return False
+    if type(option_value) not in arg_type_list:
+        log.error('opt, [%s]: argument has wrong type! ( %s != %s )'
+                  % (option_name,
+                     str(type(option_value))[8:-2],
+                     [str(x)[8:-2] for x in arg_type_list]))
+        return False
 
     return True
 
@@ -192,8 +193,8 @@ def arg_char_min_max(option_name, option_value, chk_args):
     log_msg = {'to_low' : 'arg, [%s]: has to less characters! ( %s < %s )',
                'to_high': 'arg, [%s]: has to much characters! ( %s > %s )'}
 
-    char_min = chk_args[option_name].get('char_min', False)
-    char_max = chk_args[option_name].get('char_max', False)
+    char_min = chk_args[option_name].get('char_min', None)
+    char_max = chk_args[option_name].get('char_max', None)
     log_args = [option_name, option_value]
 
     if char_min and char_min > len(option_value):
@@ -215,8 +216,8 @@ def arg_int_min_max(option_name, option_value, chk_args):
     log_msg = {'to_low' : 'arg, [%s]: int value is to low! ( %s < %s )',
                'to_high': 'arg, [%s]: int value is to high! ( %s > %s )'}
 
-    int_min  = chk_args[option_name].get('int_min', False)
-    int_max  = chk_args[option_name].get('int_max', False)
+    int_min  = chk_args[option_name].get('int_min', None)
+    int_max  = chk_args[option_name].get('int_max', None)
     log_args = [option_name, option_value]
 
     if int_min and int_min > option_value:
@@ -238,8 +239,8 @@ def arg_float_min_max(option_name, option_value, chk_args):
     log_msg = {'to_low' : 'arg, [%s]: float value is to low! ( %s < %s )',
                'to_high': 'arg, [%s]: float value is to high! ( %s > %s )'}
 
-    float_min = chk_args[option_name].get('float_min', False)
-    float_max = chk_args[option_name].get('float_max', False)
+    float_min = chk_args[option_name].get('float_min', None)
+    float_max = chk_args[option_name].get('float_max', None)
     log_args  = [option_name, option_value]
 
     if float_min and float_min > option_value:
@@ -262,8 +263,8 @@ def arg_decp_min_max(option_name, option_value, chk_args):
                           '( %s < %s )',
                'to_high': 'arg, [%s]: float value have to many decimal places!'
                           '( %s > %s )'}
-    decp_min = chk_args[option_name].get('decp_min', False)
-    decp_max = chk_args[option_name].get('decp_max', False)
+    decp_min = chk_args[option_name].get('decp_min', None)
+    decp_max = chk_args[option_name].get('decp_max', None)
     log_args = [option_name, option_value]
     if decp_min or decp_max:
         decp_value = len(str(option_value).split('.')[1])
@@ -287,8 +288,8 @@ def arg_list_min_max(option_name, option_value, chk_args):
     log_msg = {'to_low' : 'arg, [%s]: list has not enough entries! ( %s < %s )',
                'to_high': 'arg, [%s]: list has to many entries! ( %s > %s )'} 
     
-    list_min = chk_args[option_name].get('list_min', False)
-    list_max = chk_args[option_name].get('list_max', False)
+    list_min = chk_args[option_name].get('list_min', None)
+    list_max = chk_args[option_name].get('list_max', None)
     log_args = [option_name, option_value]
 
     if list_min and list_min > len(option_value):
@@ -308,6 +309,7 @@ def arg_list_min_max(option_name, option_value, chk_args):
 
 def arg_etype(option_name, option_value, chk_args):
     check_element_types = chk_args[option_name].get('arg_etype', None)
+    
     if check_element_types is None:
         return True
 
@@ -326,14 +328,17 @@ def arg_etype(option_name, option_value, chk_args):
 
 
 def arg_allow(option_name, option_value, chk_args):
-    if 'arg_allow' in chk_args[option_name]:
-        args_allow = chk_args[option_name]['arg_allow']
-        if option_value not in args_allow:
-            log.error('arg, [%s]: argument is not allowed! ( %s != %s )'
-                      % (option_name,
-                         option_value,
-                         args_allow))
-            return False
+    args_allow = chk_args[option_name].get('arg_allow', None)
+
+    if args_allow is None:
+        return True
+
+    if option_value not in args_allow:
+        log.error('arg, [%s]: argument is not allowed! ( %s != %s )'
+                   % (option_name,
+                      option_value,
+                      args_allow))
+        return False
 
     return True
 
