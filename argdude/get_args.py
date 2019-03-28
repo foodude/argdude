@@ -107,7 +107,9 @@ def get_args(chk_args, sys_args=argv[:1]):
     ## search depending arguments
     args = get_args_from_sys_args(sys_args, dict_sys_args)
     if not args:
-        return False
+        log.debug('get_args:, no defined sys args found! ( %s )'
+                  % (sys_args))
+        return True
 
     for option_name in args:
         option_value = args[option_name]
