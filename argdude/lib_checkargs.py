@@ -112,10 +112,10 @@ def opt_required_bool(args, chk_args):
         if option_name in args:
             return True
 
-    if required_bool:
-        log.error('opt [%]: expect one option but none is defined! ( %s )'
-                  % (option_name,
-                     str(required_bool)))
+        else:
+            log.error('opt [%s]: expect one option but none is defined! ( %s )'
+                      % (option_name,
+                         str(required_bool)))
         return False
 
     return True
@@ -176,9 +176,11 @@ def opt_set_var(args, chk_args):
 
 
 def arg_type(option_name, option_value, chk_args):
-    arg_type_list = chk_args[option_name].get('arg_type', [])
+    arg_type_list = chk_args[option_name].get('arg_type', None)
+    if not arg_type_list:
+        return True
 
-    if type(option_value) not in arg_type_list:
+    if  type(option_value) not in arg_type_list:
         log.error('opt, [%s]: argument has wrong type! ( %s != %s )'
                   % (option_name,
                      str(type(option_value))[8:-2],
