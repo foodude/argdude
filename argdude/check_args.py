@@ -4,7 +4,7 @@ log.getLogger().addHandler(log.NullHandler())
 
 
 def check_args(args, chk_args):
-    """ check args by chk_args definition """
+    """ check keywords and keyword arguments by chk_args definition """
 
     import argdude.lib_checkargs as lib_checkargs
 

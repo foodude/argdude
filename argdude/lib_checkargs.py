@@ -180,7 +180,7 @@ def arg_type(option_name, option_value, chk_args):
     if not arg_type_list:
         return True
 
-    if  type(option_value) not in arg_type_list:
+    if type(option_value) not in arg_type_list:
         log.error('opt, [%s]: argument has wrong type! ( %s != %s )'
                   % (option_name,
                      str(type(option_value))[8:-2],
