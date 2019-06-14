@@ -1,6 +1,7 @@
+""" description """
+
 import logging as log
 log.getLogger().addHandler(log.NullHandler())
-
 
 
 def check_args(args, chk_args):
@@ -11,7 +12,7 @@ def check_args(args, chk_args):
     # init chk_args
     if not lib_checkargs.initialize(chk_args):
         return False
-    
+
     # set default arguments
     args.update(lib_checkargs.arg_default(args, chk_args))
 
@@ -46,4 +47,3 @@ def check_args(args, chk_args):
                 return False
 
     return args
-
