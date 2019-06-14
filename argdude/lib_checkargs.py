@@ -45,14 +45,14 @@ def initialize(chk_args):
                           chk_args_keyword)
                 return False
 
-            if not isinstance(chk_args_keyword, keys[chk_args_keyword]):
+            if not isinstance(chk_args[option_name][chk_args_keyword],
+                              tuple(keys[chk_args_keyword])):
                 log.error('chk_args, [%s]: key value has wrong type! '
                           '( %s != %s )',
                           chk_args_keyword,
                           type(chk_args[option_name][chk_args_keyword]),
                           keys[chk_args_keyword])
                 return False
-
     return True
 
 
@@ -170,7 +170,7 @@ def opt_set_var(args, chk_args):
 
     dict_vars = {}
     for option_name in args:
-        if not option_name in chk_args:
+        if option_name not in chk_args:
             continue
 
         set_var = chk_args[option_name].get('set_var', None)
@@ -204,7 +204,7 @@ def arg_type(option_name, option_value, chk_args):
 def arg_char_min_max(option_name, option_value, chk_args):
     """ check if arg has min or max character """
 
-    log_msg = {'to_low' : 'arg, [%s]: has to less characters! ( %s < %s )',
+    log_msg = {'to_low': 'arg, [%s]: has to less characters! ( %s < %s )',
                'to_high': 'arg, [%s]: has to much characters! ( %s > %s )'}
 
     char_min = chk_args[option_name].get('char_min', None)
@@ -227,7 +227,7 @@ def arg_char_min_max(option_name, option_value, chk_args):
 def arg_int_min_max(option_name, option_value, chk_args):
     """ check if arg has min or max integer value """
 
-    log_msg = {'to_low' : 'arg, [%s]: int value is to low! ( %s < %s )',
+    log_msg = {'to_low': 'arg, [%s]: int value is to low! ( %s < %s )',
                'to_high': 'arg, [%s]: int value is to high! ( %s > %s )'}
 
     int_min = chk_args[option_name].get('int_min', None)
@@ -250,7 +250,7 @@ def arg_int_min_max(option_name, option_value, chk_args):
 def arg_float_min_max(option_name, option_value, chk_args):
     """ check if arg has min or max float value """
 
-    log_msg = {'to_low' : 'arg, [%s]: float value is to low! ( %s < %s )',
+    log_msg = {'to_low': 'arg, [%s]: float value is to low! ( %s < %s )',
                'to_high': 'arg, [%s]: float value is to high! ( %s > %s )'}
 
     float_min = chk_args[option_name].get('float_min', None)
@@ -273,8 +273,8 @@ def arg_float_min_max(option_name, option_value, chk_args):
 def arg_decp_min_max(option_name, option_value, chk_args):
     """ check if arg value has min or max decimal places """
 
-    log_msg = {'to_low' : 'arg, [%s]: float value has not enough decimal places! '
-                          '( %s < %s )',
+    log_msg = {'to_low': 'arg, [%s]: float value has not enough decimal places!'
+                         '( %s < %s )',
                'to_high': 'arg, [%s]: float value have to many decimal places!'
                           '( %s > %s )'}
 
@@ -301,7 +301,7 @@ def arg_decp_min_max(option_name, option_value, chk_args):
 def arg_list_min_max(option_name, option_value, chk_args):
     """ check if list has min or max elements """
 
-    log_msg = {'to_low' : 'arg, [%s]: list has not enough entries! ( %s < %s )',
+    log_msg = {'to_low': 'arg, [%s]: list has not enough entries! ( %s < %s )',
                'to_high': 'arg, [%s]: list has to many entries! ( %s > %s )'}
 
     list_min = chk_args[option_name].get('list_min', None)
@@ -330,7 +330,7 @@ def arg_etype(option_name, option_value, chk_args):
         return True
 
     for count, element in enumerate(option_value):
-        if isinstance(element, tuple(check_element_types)):
+        if not isinstance(element, tuple(check_element_types)):
             log.error('arg, [%s]: element %s is from unexpectet type! '
                       '( %s != %s )',
                       option_name,
