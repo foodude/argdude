@@ -41,4 +41,3 @@ def group_id_true(group_id):
 
 def group_id_false(group_id):
     return group_id not in get_group_list('group_id')
-

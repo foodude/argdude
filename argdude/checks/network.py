@@ -1,11 +1,19 @@
-## network interfaces
+""" argdude network interface checks """
+
+
 def get_iface_list():
+    """ return network devices from /proc """
     with open('/proc/net/dev', 'r') as file:
-        return [x.split(' ')[0][0:-1] for x in file if x.split(' ')[0]][1:]
+        return [x.split(':')[0].strip()
+                for x in file if len(x.split(':')) > 1]
+
 
 def iface_name_true(iface_name):
+    """ check if a network interface exist """
     return iface_name in get_iface_list()
 
+
 def iface_name_false(iface_name):
+    """ check if a network interface does not exist """
     return iface_name not in get_iface_list()
 
