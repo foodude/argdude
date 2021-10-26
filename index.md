@@ -6,9 +6,9 @@ Table of Contents
       * [Description](#description)
       * [Disclaimer](#disclaimer)
       * [Introduction](#introduction)
-   * [get_args](#get_args)
+   * [Class Argdude](#class_argdude)
       * [Description](#description-1)
-      * [Define sys args](#define-sys-args)
+      * [Usage](#usage-argdude)
    * [check_args](#check_args)
       * [Options](#options)
          * [opt_unknown](#opt_unknown)
@@ -70,10 +70,23 @@ Of course, you can use any log format you prefer
 To get a first overview you can look at the point 'Real world example'.
 
 
-# get_args
+# Class Argdude
 ## Description
+This Class perform various checks on a dictionary like kwargs.
+In the context of argdude it is called 'kw_args'
+The checks which will be performed come from a dictionary,
+which is called 'kw_rules'
 
-## Define sys args
+
+## Usage
+import argdude
+from argdude.checks.file import file_r_true
+
+ad = argdude.Argdude()
+ad.kwargs = {'file_name': '/etc/passwd'}
+ad.add_rule('file_name', arg_type=[str], arg_check=[file_r_true])
+ad.check_kwargs()
+
 
 
 # check_args
