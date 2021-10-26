@@ -55,8 +55,25 @@ which is called 'kw_rules'
 foo bar
 
 ### kw_ignore
-Ignore checks on keywords
+Keywords which are not checked.
 
+### kw_required
+Keywords which are expected in kwargs.
+
+### kw_include
+Keywords which have to be present for a certain keyword.
+
+### kw_exclude
+Keywords which are not allowed to be present for a certain keyword.
+
+### arg_default
+Define default arguments for keywords.
+
+### arg_type
+Define the type / types for keyword arguments.
+
+### arg_check
+Perform check functions in your namespace for keyword arguments.
 
 
 
