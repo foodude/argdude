@@ -51,7 +51,8 @@ The checks which will be performed come from a dictionary,
 which is called 'kw_rules'
 
 
-## Keyword rules (kw_rules)
+## kw_rules
+foo bar
 
 
 
