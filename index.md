@@ -91,6 +91,7 @@ Advanced example
 import logging
 import argdude
 from argdude.checks.file import file_r_true
+from argdude.checks.linux.user import user_name_true
 
 args = {'file_name': '/etc/passwd',
         'user_name': 'root'}
@@ -108,7 +109,7 @@ ad.add_rule('user_name',
 ad.check_kwargs()
 ```
 
-Write your own check function
+Write your owne check function
 ```
 import logging
 import argdude
@@ -123,12 +124,12 @@ ad.check_kwargs()
 ```
 
 
-args = {'
-
 
 # Pytest
 
 ## tests
+test_argdude.py
+test_check_kwargs.py
 
 ## testing
 ```
