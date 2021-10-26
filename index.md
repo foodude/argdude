@@ -15,7 +15,7 @@ Table of Contents
          * [arg_default](#arg_default)
          * [arg_type](#arg_type)
          * [arg_check](#arg_check)
-      * [Examples](#examples)
+   * [Examples](#examples)
    * [Pytest](#tests)
       * [tests](#tests)
       * [testing](#testing)
@@ -76,6 +76,54 @@ Define the type / types for keyword arguments.
 Perform check functions in your namespace for keyword arguments.
 
 
+# Examples
+Basic usage
+```
+import argdude
+
+ad = argdude.Argdude()
+ad.add_rule('file_name', arg_default='/etc/passwd', arg_type=[str]
+ad.check_kwargs()
+```
+
+Advanced example
+```
+import logging
+import argdude
+from argdude.checks.file import file_r_true
+
+args = {'file_name': '/etc/passwd',
+        'user_name': 'root'}
+        
+ad = argdude.Argdude(args)
+ad.add_rule('file_name', 
+  kw_required=True,
+  kw_include=['user_name']
+  arg_type=[str]
+  arg_check=[file_r_true])
+ad.add_rule('user_name',
+  arg_default='root',
+  arg_type=[str],
+  arg_check=[user_r_true])
+ad.check_kwargs()
+```
+
+Write your own check function
+```
+import logging
+import argdude
+
+def real_user(user_name):
+  return user_name == 'spiderman'
+  
+ad = argdude.Argdude()
+ad.kw_args = {'user_name': 'aquaman'}
+ad.add_rule('user_name', arg_check=[real_user]
+ad.check_kwargs()
+```
+
+
+args = {'
 
 
 # Pytest
