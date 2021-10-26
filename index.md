@@ -109,6 +109,24 @@ ad.add_rule('user_name',
 ad.check_kwargs()
 ```
 
+In a function
+```
+from argdude.checks.linux.user import user_name_true
+
+def create_user(**kwargs):
+  ad = argdude.Argdude(kwargs)
+  ad.add_rule('user_name',
+    kw_required=True,
+    arg_default='root',
+    arg_type=[str],
+    arg_check=[user_name_true]
+  args = ad.check_kwargs()
+  if not args:
+    return False
+    
+  ...
+```
+
 Write your owne check function
 ```
 import logging
