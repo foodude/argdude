@@ -79,6 +79,7 @@ which is called 'kw_rules'
 
 
 ## Usage
+...
 import argdude
 from argdude.checks.file import file_r_true
 
@@ -86,7 +87,7 @@ ad = argdude.Argdude()
 ad.kwargs = {'file_name': '/etc/passwd'}
 ad.add_rule('file_name', arg_type=[str], arg_check=[file_r_true])
 ad.check_kwargs()
-
+...
 
 
 # check_args
