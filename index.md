@@ -8,7 +8,7 @@ Table of Contents
    * [Class Argdude](#class-argdude)
       * [Description](#description-1)
       * [kw_rules](#kw_rules)
-         * [kw_ignore]](#kw-ignore)
+         * [kw_ignore](#kw-ignore)
          * [kw_required](#kw-required)
          * [kw_include(#kw-include)
          * [kw_exclude(#kw-exclude)
