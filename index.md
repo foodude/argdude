@@ -54,6 +54,9 @@ which is called 'kw_rules'
 ## kw_rules
 foo bar
 
+### kw_ignore
+Ignore checks on keywords
+
 
 
 
