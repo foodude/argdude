@@ -7,14 +7,14 @@ Table of Contents
       * [Disclaimer](#disclaimer)
    * [Class Argdude](#class-argdude)
       * [Description](#description-1)
-      * [Keyword rules](#kw_rules)
-         ** [kw_ignore]](#kw-ignore)
-         ** [kw_required](#kw-required)
-         ** [kw_include(#kw-include)
-         ** [kw_exclude(#kw-exclude)
-         ** [arg_default](#arg-default)
-         ** [arg_type](#arg-type)
-         ** [arg_check(#arg-check)
+      * [Keyword rules](#kw-rules)
+         * [kw_ignore]](#kw-ignore)
+         * [kw_required](#kw-required)
+         * [kw_include(#kw-include)
+         * [kw_exclude(#kw-exclude)
+         * [arg_default](#arg-default)
+         * [arg_type](#arg-type)
+         * [arg_check(#arg-check)
       * [Examples](#examples)
    * [Pytest](#tests)
       * [tests](#tests)
@@ -51,16 +51,10 @@ The checks which will be performed come from a dictionary,
 which is called 'kw_rules'
 
 
-## Usage
-```
-import argdude
-from argdude.checks.file import file_r_true
+## Keyword rules (kw_rules)
 
-ad = argdude.Argdude()
-ad.kwargs = {'file_name': '/etc/passwd'}
-ad.add_rule('file_name', arg_type=[str], arg_check=[file_r_true])
-ad.check_kwargs()
-```
+
+
 
 
 # Pytest
