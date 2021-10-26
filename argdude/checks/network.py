@@ -1,4 +1,4 @@
-""" argdude network interface checks """
+""" argdude network interface tests """
 
 
 def get_iface_list():
@@ -10,10 +10,10 @@ def get_iface_list():
 
 def iface_name_true(iface_name):
     """ check if a network interface exist """
-    return iface_name in get_iface_list()
+    return iface_name['kw_value'] in get_iface_list()
 
 
 def iface_name_false(iface_name):
     """ check if a network interface does not exist """
-    return iface_name not in get_iface_list()
+    return iface_name['kw_value'] not in get_iface_list()
 
