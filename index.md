@@ -6,7 +6,7 @@ Table of Contents
       * [Description](#description)
       * [Disclaimer](#disclaimer)
       * [Introduction](#introduction)
-   * [Class Argdude](#class_argdude)
+   * [Class Argdude](#class-argdude)
       * [Description](#description-1)
       * [Usage](#usage-argdude)
    * [check_args](#check_args)
