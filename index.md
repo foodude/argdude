@@ -8,7 +8,7 @@ Table of Contents
       * [Introduction](#introduction)
    * [Class Argdude](#class-argdude)
       * [Description](#description-1)
-      * [Usage](#usage-argdude)
+      * [Usage](#usage)
    * [check_args](#check_args)
       * [Options](#options)
          * [opt_unknown](#opt_unknown)
