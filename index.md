@@ -93,10 +93,10 @@ import argdude
 from argdude.checks.file import file_r_true
 from argdude.checks.linux.user import user_name_true
 
-args = {'file_name': '/etc/passwd',
+kwargs = {'file_name': '/etc/passwd',
         'user_name': 'root'}
         
-ad = argdude.Argdude(args)
+ad = argdude.Argdude(kwargs)
 ad.add_rule('file_name', 
   kw_required=True,
   kw_include=['user_name']
