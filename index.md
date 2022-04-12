@@ -105,7 +105,7 @@ ad.add_rule('file_name',
 ad.add_rule('user_name',
   arg_default='root',
   arg_type=[str],
-  arg_check=[user_r_true])
+  arg_check=[user_name_true])
 ad.check_kwargs()
 ```
 
