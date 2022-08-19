@@ -4,10 +4,10 @@ log.getLogger().addHandler(log.NullHandler())
 
 
 def kw_unknown(kw_args, kw_rules):
-    """ 
+    """
     info:
         check for unknown keywords
-    
+
     usage:
         kw_unknown(kw_args, kw_rules)
 
@@ -28,9 +28,9 @@ def kw_unknown(kw_args, kw_rules):
 
 
 def kw_ignore(kw_args, kw_rules):
-    """ 
+    """
     info:
-        check if a keyword should be ignored 
+        check if a keyword should be ignored
 
     usage:
         kw_ignore(kw_args, kw_rules)
@@ -53,7 +53,7 @@ def kw_ignore(kw_args, kw_rules):
 def kw_required(kw_args, kw_rules):
     """
     info:
-        check if all required keywords in kw_args 
+        check if all required keywords in kw_args
 
     usage:
         kw_required(kw_args, kw_rules)
@@ -80,7 +80,7 @@ def kw_required(kw_args, kw_rules):
 def kw_include(kw_args, kw_rules):
     """
     info:
-        check if a keyword includes other keywords and if they 
+        check if a keyword includes other keywords and if they
         are present
 
     usage:
@@ -92,7 +92,7 @@ def kw_include(kw_args, kw_rules):
     return:
         True | False
     """
-    
+
     for kw_name in kw_rules:
         list_kw_include = kw_rules[kw_name].get('kw_include', [])
 
@@ -127,7 +127,7 @@ def kw_exclude(kw_args, kw_rules):
             continue
 
         list_kw_exclude = kw_rules[kw_name].get('kw_exclude', [])
-        
+
         for kw_exclude in list_kw_exclude:
             if kw_exclude in kw_args:
                 log.error(
@@ -151,7 +151,7 @@ def kwarg_default(kw_args, kw_rules):
         kwarg_default({}, {'foo': 'bar'})
 
     return:
-        kw_args 
+        kw_args
     """
 
     for kw_name in kw_rules:
@@ -222,7 +222,7 @@ def kwarg_check(kw_name, kw_value, kw_rules):
                      f'succeed: {kw_value}')
 
         else:
-            log.error('Keyword: {kw_name}, check: {test_func.__name__} '
+            log.error(f'Keyword: {kw_name}, check: {test_func.__name__} '
                       f'failed: {kw_value}')
 
             return False
