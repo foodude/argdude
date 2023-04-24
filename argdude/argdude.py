@@ -1,5 +1,7 @@
-from .check_kwargs import check_kwargs
+import logging as log
+from check_kwargs import check_kwargs
 
+log.getLogger().addHandler(log.NullHandler())
 
 class Argdude:
     """
@@ -36,12 +38,34 @@ class Argdude:
         ad.check_kwargs()
     """
 
-    def __init__(self, kw_args={}):
-        self.kw_args = kw_args
+    def __init__(self, kw_args=None):
+        if kw_args is None:
+            self.kw_args = {}
+        
+        elif type(kw_args) is not dict:
+            log.error(f"kw_args: not from type dict: {type(kw_args)}")
+            return None
+
+        else:
+            self.kw_args = kw_args
+            
         self.kw_rules = {}
 
+
     def add_rule(self, kw_name, **args):
-        """ add kw rule """
+        list_rules = [
+            'kw_require',
+            'kw_include',
+            'kw_exclude',
+            'arg_default',
+            'arg_type',
+            'arg_check']
+
+        for kw_rule in args:
+            if kw_rule not in list_rules:
+                log.error(f'kw_rule: unknown rule: {kw_rule}')
+                return False
+
         self.kw_rules[kw_name] = args
 
     def check_kwargs(self):

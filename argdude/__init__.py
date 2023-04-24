@@ -1,1 +1,1 @@
-from .argdude import Argdude
+from argdude import Argdude
